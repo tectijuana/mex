@@ -1,6 +1,6 @@
 {
   "name": "mex-agent",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "CLI engine for mex scaffold — drift detection, pre-analysis, and targeted sync",
   "type": "module",
   "main": "./dist/index.js",
