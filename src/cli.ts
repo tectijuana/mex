@@ -201,11 +201,13 @@ program
   .description("Append a decision, note, risk, or todo to the mex event log")
   .option("--type <type>", "Event type: decision, note, risk, todo", "note")
   .option("--file <path>", "Related file path (repeatable)", (value, prev: string[]) => [...prev, value], [])
+  .option("--source <source>", "Where the event came from (e.g. meeting, manual, agent)")
+  .option("--status <status>", "Lifecycle status (e.g. decided, implemented)")
   .action(async (message, opts) => {
     try {
       const config = loadConfig();
       const { runLog } = await import("./events.js");
-      await runLog(config, message, { kind: opts.type, files: opts.file });
+      await runLog(config, message, { kind: opts.type, files: opts.file, source: opts.source, status: opts.status });
     } catch (err) {
       console.error((err as Error).message);
       process.exit(1);
