@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-06-14
+
+### Added
+- **Event log provenance/lifecycle fields** — `EventEntry` now accepts two optional, free-form string fields: `source` (where an event came from, e.g. `meeting`, `manual`, `agent`) and `status` (decision lifecycle, e.g. `decided`, `implemented`). Both are written only when provided and are preserved by `mex timeline` (including `--json`). `kind` stays a closed enum; `status` is deliberately ungated so unrecognized values are never dropped. Exposed via `appendEvent` (the in-process API) and optional `mex log --source`/`--status` flags. Entries without these fields are unchanged.
+
 ## [0.6.0] - 2026-06-09
 
 ### Added
